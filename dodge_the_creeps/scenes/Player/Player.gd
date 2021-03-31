@@ -3,6 +3,7 @@ extends Area2D
 signal hit
 export var speed = 400
 var screen_size
+var target = Vector2()
 
 
 func _ready():
@@ -11,19 +12,30 @@ func _ready():
 
 func start(pos):
 	position = pos
+	target = pos
 	show()
 	$CollisionShape2D.disabled = false
+
 	
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		target = event.position
+
+
 func _process(delta):
-	var velocity = Vector2()  # The player's movement vector.
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
-		velocity.y -= 1
+	var velocity = Vector2() 
+	if position.distance_to(target) > 10:
+		velocity = target - position
+
+	# if Input.is_action_pressed("ui_right"):
+	# 	velocity.x += 1
+	# if Input.is_action_pressed("ui_left"):
+	# 	velocity.x -= 1
+	# if Input.is_action_pressed("ui_down"):
+	# 	velocity.y += 1
+	# if Input.is_action_pressed("ui_up"):
+	# 	velocity.y -= 1
+
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
