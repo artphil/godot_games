@@ -1,3 +1,9 @@
+---
+noteId: "fbbb2d9094bd11ebbf8edf79a92ce8a5"
+tags: []
+
+---
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/artphil/godot_games/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
