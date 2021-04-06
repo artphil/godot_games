@@ -4,8 +4,13 @@ tags: []
 
 ---
 
-# godot_games
-Jogos produzidos no estudo da Engine Godot.
+
 
 ## Jogos
 [Dodge The Creeps](exec/html5/DodgeTheCreeps/DodgeTheCreeps.html)
+
+## Padrões
+PascalCase - Classes/Cenas
+snake_case - variáveis e funções
+SNAKE_CASE (all caps) - variáveis globais
+
