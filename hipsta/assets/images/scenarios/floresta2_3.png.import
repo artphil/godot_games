@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level_bg1.png-ae6c89d81442168936369f4c1f59c1bc.stex"
+path="res://.import/floresta2_3.png-4d9fa364259308fe09c7e3e4c7e628d8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/scenarios/level_bg1.png"
-dest_files=[ "res://.import/level_bg1.png-ae6c89d81442168936369f4c1f59c1bc.stex" ]
+source_file="res://assets/images/scenarios/floresta2_3.png"
+dest_files=[ "res://.import/floresta2_3.png-4d9fa364259308fe09c7e3e4c7e628d8.stex" ]
 
 [params]
 
