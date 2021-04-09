@@ -24,30 +24,6 @@ __meta__ = {
 }
 Mob = ExtResource( 4 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 268, 454 )
-collision_mask = 4
-mass = 1.0
-
-[node name="chao" type="StaticBody2D" parent="."]
-position = Vector2( 220.591, 599.939 )
-collision_layer = 4
-collision_mask = 0
-physics_material_override = SubResource( 1 )
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
-position = Vector2( 282.097, -0.601013 )
-shape = SubResource( 2 )
-
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[node name="MobTimer2" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2( 510, 300 )
 scale = Vector2( 0.53, 0.56 )
@@ -80,6 +56,33 @@ texture = ExtResource( 6 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512.421, 297.651 )
 current = true
-[connection signal="body_entered" from="Player" to="chao" method="_on_Player_body_entered"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
-[connection signal="timeout" from="MobTimer2" to="." method="_on_MobTimer_timeout"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Player" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 268, 454 )
+collision_mask = 4
+mode = 0
+mass = 1.0
+
+[node name="chao" type="StaticBody2D" parent="Node"]
+position = Vector2( 220.591, 599.939 )
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/chao"]
+position = Vector2( 282.097, -0.601013 )
+shape = SubResource( 2 )
+
+[node name="MobTimer" type="Timer" parent="Node"]
+wait_time = 2.0
+autostart = true
+
+[node name="MobTimer2" type="Timer" parent="Node"]
+wait_time = 2.0
+autostart = true
+[connection signal="body_entered" from="Node/Player" to="Node/chao" method="_on_Player_body_entered"]
+[connection signal="timeout" from="Node/MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="Node/MobTimer2" to="." method="_on_MobTimer_timeout"]

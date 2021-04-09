@@ -16,7 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Hipsta"
+run/main_scene="res://scenes/Level.tscn"
 config/icon="res://icon.png"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="scenario"
 
 [rendering]
 

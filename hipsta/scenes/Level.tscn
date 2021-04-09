@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/chao.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Level.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Slime.tscn" type="PackedScene" id=5]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 517.743, 10 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+Mob = ExtResource( 5 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 322.728, 452.665 )
+
+[node name="chao" type="StaticBody2D" parent="."]
+position = Vector2( 220.591, 599.939 )
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
+position = Vector2( 282.097, -0.601013 )
+shape = SubResource( 2 )
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="MobTimer2" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+[connection signal="body_entered" from="Player" to="chao" method="_on_Player_body_entered"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="MobTimer2" to="." method="_on_MobTimer_timeout"]

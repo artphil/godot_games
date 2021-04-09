@@ -5,7 +5,6 @@ var g_texture_width: float = 0
 
 func _ready():
 	g_texture_width = texture.get_size().x * scale.x
-	print(g_texture_width)
 
 func _process(delta: float):
 	position.x -= scroll_speed
