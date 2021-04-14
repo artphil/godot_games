@@ -5,7 +5,8 @@ export (PackedScene) var Mob
 
 
 func _ready():
-	pass 
+	#$Player1/AnimatedSprite.play()
+	pass
 
 
 func _on_MobTimer_timeout():
