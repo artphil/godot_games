@@ -116,6 +116,7 @@ animations = [ {
 } ]
 
 [node name="Player1" type="KinematicBody2D"]
+collision_mask = 2147483654
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -127,6 +128,7 @@ animation = "run"
 frame = 11
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="GroundDetector" type="RayCast2D" parent="."]

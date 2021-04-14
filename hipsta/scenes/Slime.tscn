@@ -156,13 +156,13 @@ animations = [ {
 ]]
 scale = Vector2( 0.75, 0.75 )
 collision_layer = 2
-collision_mask = 7
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 29 )
 animation = "run"
-frame = 4
+frame = 23
 speed_scale = 3.0
 playing = true
 

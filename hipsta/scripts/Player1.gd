@@ -34,6 +34,11 @@ func _process(delta):
 		
 	if position.x < -20:
 		restart()
+	
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.is_in_group("enemy"):
+			restart()
 		
 func _physics_process(delta):
 	# reset horizontal velocity
@@ -57,6 +62,7 @@ func _physics_process(delta):
 			vel.y = 0
 			jumpCounter = 0
 	else:
+		grounded = false
 		vel.y += gravity * delta
 
 func _input(event):

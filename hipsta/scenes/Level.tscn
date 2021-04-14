@@ -19,7 +19,6 @@ Mob = ExtResource( 5 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 262.963, 421.809 )
-collision_mask = 6
 
 [node name="chao" type="StaticBody2D" parent="."]
 position = Vector2( 220.591, 599.939 )
