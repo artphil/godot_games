@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/items/heart_bar.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/fonteTelaInicial.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 39
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="GUI" type="MarginContainer"]
+anchor_right = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_bottom = 75.0
+rect_scale = Vector2( 0.991229, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+light_mask = 8
+margin_right = 1004.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 240
+
+[node name="Score" type="HBoxContainer" parent="HBoxContainer"]
+margin_right = 148.0
+margin_bottom = 75.0
+
+[node name="Label" type="Label" parent="HBoxContainer/Score"]
+margin_top = 17.0
+margin_right = 128.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+text = "Score      "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="HBoxContainer/Score"]
+margin_left = 132.0
+margin_top = 22.0
+margin_right = 148.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeBar" type="MarginContainer" parent="HBoxContainer"]
+margin_left = 388.0
+margin_right = 988.0
+margin_bottom = 75.0
+
+[node name="Life" type="TextureProgress" parent="HBoxContainer/LifeBar"]
+margin_right = 600.0
+margin_bottom = 75.0
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource( 1 )
+fill_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

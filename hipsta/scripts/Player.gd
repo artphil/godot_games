@@ -1,8 +1,7 @@
 extends KinematicBody2D
 
-# stats
-var score : int = 0
- 
+export(Resource) var g
+
 # physics
 var speed : int = 200
 var jumpForce : int = 600
@@ -12,7 +11,10 @@ var jumpCounter = 0
 var start_position = Vector2()
 var invencible = true
 var vel : Vector2 = Vector2()
+
 onready var sprite = $AnimatedSprite
+onready var ground = $GroundDetector
+onready var timer = $Timer
 
 var grounded : bool = false
 
@@ -31,23 +33,22 @@ func _process(delta):
 		sprite.animation = "down"
 	else:
 		sprite.animation = "run"
-		
-	if position.x < -20:
-		restart()
 	
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("enemy"):
+			g.life_down()
 			restart()
+			break
 		
 func _physics_process(delta):
 	# reset horizontal velocity
 	vel.x = 0
 	 
 	# movement inputs
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		vel.x -= speed
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		vel.x += speed
 		
 	# applying the velocity
@@ -55,8 +56,7 @@ func _physics_process(delta):
 	
 	 
 	# jump input
-	#if is_on_floor():
-	if $GroundDetector.is_colliding():
+	if ground.is_colliding():
 		if not grounded:
 			grounded = true
 			vel.y = 0
@@ -66,7 +66,7 @@ func _physics_process(delta):
 		vel.y += gravity * delta
 
 func _input(event):
-	if event.is_action_pressed("ui_select") and jumpCounter < 2:
+	if event.is_action_pressed("jump") and jumpCounter < 2:
 		jumpCounter +=1
 		vel.y = -jumpForce
 
@@ -74,9 +74,13 @@ func restart():
 	position = start_position
 	invencible = true
 	set_collision_mask_bit(1, false)
-	$Timer.start()
+	timer.start()
 
 func _on_Timer_timeout():
 	invencible = false
 	set_collision_mask_bit(1, true)
 	sprite.visible = true
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	restart()
