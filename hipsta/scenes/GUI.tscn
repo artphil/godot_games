@@ -28,9 +28,11 @@ margin_bottom = 75.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 240
+alignment = 2
 
 [node name="Score" type="HBoxContainer" parent="HBoxContainer"]
-margin_right = 148.0
+margin_left = 16.0
+margin_right = 164.0
 margin_bottom = 75.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Score"]
@@ -58,8 +60,8 @@ __meta__ = {
 }
 
 [node name="LifeBar" type="MarginContainer" parent="HBoxContainer"]
-margin_left = 388.0
-margin_right = 988.0
+margin_left = 404.0
+margin_right = 1004.0
 margin_bottom = 75.0
 
 [node name="Life" type="TextureProgress" parent="HBoxContainer/LifeBar"]

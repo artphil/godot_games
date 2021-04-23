@@ -24,3 +24,4 @@ func life_up():
 func life_down():
 	if life > 0:
 		life -= 1
+

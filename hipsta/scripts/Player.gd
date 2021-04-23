@@ -46,10 +46,10 @@ func _physics_process(delta):
 	vel.x = 0
 	 
 	# movement inputs
-	if Input.is_action_pressed("left"):
-		vel.x -= speed
-	if Input.is_action_pressed("right"):
-		vel.x += speed
+	#if Input.is_action_pressed("left"):
+	#	vel.x -= speed
+	#if Input.is_action_pressed("right"):
+	#	vel.x += speed
 		
 	# applying the velocity
 	vel = move_and_slide(vel, Vector2.UP)
@@ -84,3 +84,19 @@ func _on_Timer_timeout():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	restart()
+
+
+func _on_JumpButton_pressed():
+	vel.y = -jumpForce
+
+
+func _on_LeftButton_button_down():
+	vel.x -= speed
+
+
+func _on_RightButton_button_down():
+	vel.x += speed
+
+
+func _on_LeftButton_pressed():
+	vel.x -= speed
