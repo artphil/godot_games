@@ -14,6 +14,6 @@ onready var layers = [
 				$layer_4_2
 			]
 
-func _process(delta):
+func _process(_delta):
 	for layer in layers:
 		layer.move(g.speed)

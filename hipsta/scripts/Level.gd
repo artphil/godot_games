@@ -24,7 +24,7 @@ func _ready():
 	g.start()
 
 
-func _process(delta):
+func _process(_delta):
 	score_gui.text = str(g.score)
 	life_gui.value = g.life
 	player.speed_scale = round(1+g.speed/10)
@@ -76,3 +76,4 @@ func new_bg():
 			bg.queue_free()
 		bg = backgrounds[level].instance()
 		add_child(bg)
+
