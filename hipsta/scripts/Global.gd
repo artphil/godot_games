@@ -4,7 +4,6 @@ const LIFE_MAX = 5
 const LIFE_INIT = 3
 const SPEED_INIT = 1.0
 
-
 var life : int
 var speed : float
 var score : int
@@ -14,6 +13,10 @@ func start():
 	score = 0
 	life = LIFE_INIT
 	speed = SPEED_INIT
+
+
+func stop():
+	speed = 0
 
 
 func life_up():

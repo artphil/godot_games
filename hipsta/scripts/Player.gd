@@ -17,6 +17,7 @@ onready var sprite = $AnimatedSprite
 onready var ground = $GroundDetector
 onready var timer = $Timer
 
+
 var grounded : bool = false
 
 func _ready():
@@ -39,6 +40,12 @@ func _process(_delta):
 		var collision = get_slide_collision(i)
 		if collision.collider.is_in_group("enemy"):
 			g.life_down()
+			if g.life < 1 : 
+				g.stop()
+				sprite.stop()
+				var gameover = preload("res://scenes/GameOver.tscn").instance()
+#				add_child(gameover)
+				get_tree().change_scene("res://scenes/GameOver.tscn")
 			restart()
 			break
 		
@@ -96,7 +103,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_JumpButton_pressed():
-	vel.y = -jumpForce
+	if jumpCounter < 2:
+		jumpCounter +=1
+		vel.y = -jumpForce
 
 
 func _on_LeftButton_button_down():
